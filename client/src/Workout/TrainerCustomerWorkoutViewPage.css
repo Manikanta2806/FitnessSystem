@@ -1,0 +1,20 @@
+.page-wrapper {
+    min-height: 100vh;
+    background-image: url("../assets/paymentform.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2rem;
+  }
+  
+  .card-style {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 12px;
+    color: rgb(220, 41, 41);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+  
+  td{
+    background-color: lightgoldenrodyellow;
+  }

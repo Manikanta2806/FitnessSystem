@@ -1,0 +1,11 @@
+fiitness
+                                   						users
+						trainer								customer
+				
+				customers under		payment				bmi weight 		diet plan     weekly exercises   payment section (offers and plans) 	
+				their residence		section 			calculator
+
+
+										user : {username,email,password,mobile,role)
+										if(trainer) {experience,age}
+										if(customer) {weight,height,type of body need} 

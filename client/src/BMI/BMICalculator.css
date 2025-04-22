@@ -1,0 +1,6 @@
+.bmi-container {
+    background-image: url('https://images.unsplash.com/photo-1588776814546-ec78c5f27c38');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
