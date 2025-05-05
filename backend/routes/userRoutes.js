@@ -21,22 +21,42 @@ router.post('/register', upload.single('profilePicture'), async (req, res) => {
     if (existingUser) return res.status(400).json({ error: 'User already exists' });
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const profile_picture = req.file
-      ? `${req.protocol}://${req.get('host')}/uploads/profile_pictures/${req.file.filename}`
-      : null;
+    const profile_picture = req.file ? req.file.path : null; // Cloudinary URL
 
     const user = new User({
-      username, email, password: hashedPassword, mobile, role, profile_picture
+      username,
+      email,
+      password: hashedPassword,
+      mobile,
+      role,
+      profile_picture,
     });
+
     await user.save();
 
     if (role === 'trainer') {
-      if (!experience || !age) return res.status(400).json({ error: 'Experience and age are required for trainers' });
-      const trainer = new Trainer({ user_id: user._id, experience, age, customers: [] });
+      if (!experience || !age)
+        return res.status(400).json({ error: 'Experience and age are required for trainers' });
+
+      const trainer = new Trainer({
+        user_id: user._id,
+        experience,
+        age,
+        customers: [],
+      });
+
       await trainer.save();
     } else if (role === 'customer') {
-      if (!weight || !height || !body_type) return res.status(400).json({ error: 'Weight, height, and body type are required for customers' });
-      const customer = new Customer({ user_id: user._id, weight, height, body_type });
+      if (!weight || !height || !body_type)
+        return res.status(400).json({ error: 'Weight, height, and body type are required for customers' });
+
+      const customer = new Customer({
+        user_id: user._id,
+        weight,
+        height,
+        body_type,
+      });
+
       await customer.save();
     }
 
@@ -63,7 +83,16 @@ router.post('/login', async (req, res) => {
     }
 
     const token = generateToken({ userId: user._id, role: user.role });
-    res.json({ token, role: user.role, isTrainer, userId: user._id });
+
+    res.json({
+      token,
+      role: user.role,
+      isTrainer,
+      userId: user._id,
+      username: user.username,
+      email: user.email,
+      profile_picture: user.profile_picture,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
