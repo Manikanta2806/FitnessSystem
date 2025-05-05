@@ -27,7 +27,7 @@ const AddDietPlan = () => {
       if (!userId) return;
       try {
         const { data: customerList } = await axios.get(
-          `http://localhost:4000/api/workouts/trainer-with-customers/${userId}`
+          `https://fitnesssystem.onrender.com/api/workouts/trainer-with-customers/${userId}`
         );
         setCustomers(customerList || []);
 
@@ -38,7 +38,7 @@ const AddDietPlan = () => {
               typeof customer._id === "object" ? customer._id._id : customer._id;
             try {
               const { data: user } = await axios.get(
-                `http://localhost:4000/api/users/getuser/${custUserId}`
+                `https://fitnesssystem.onrender.com/api/users/getuser/${custUserId}`
               );
               map[custUserId] = user;
             } catch {
@@ -79,7 +79,7 @@ const AddDietPlan = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/diet/add", formData);
+      await axios.post("https://fitnesssystem.onrender.com/api/diet/add", formData);
       setMessage("✅ Diet plan created successfully!");
       setFormData({
         customer_id: '',

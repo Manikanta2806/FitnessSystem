@@ -20,7 +20,7 @@ const DietPlanView = () => {
       if (!userId) return;
 
       try {
-        const res = await axios.get(`http://localhost:4000/api/diet/customer/${userId}`);
+        const res = await axios.get(`https://fitnesssystem.onrender.com/api/diet/customer/${userId}`);
         if (res.data && res.data.weekPlan) {
           setDietPlan(res.data);
           setMessage("");

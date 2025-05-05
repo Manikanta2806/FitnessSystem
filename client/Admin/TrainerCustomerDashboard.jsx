@@ -17,8 +17,8 @@ export default function TrainerCustomerDashboard() {
   const fetchAllData = async () => {
     try {
       const [trainerRes, customerRes] = await Promise.all([
-        axios.get("http://localhost:4000/api/admin/all"),
-        axios.get("http://localhost:4000/api/admin/allc"),
+        axios.get("https://fitnesssystem.onrender.com/api/admin/all"),
+        axios.get("https://fitnesssystem.onrender.com/api/admin/allc"),
       ]);
 
       const trainerData = trainerRes.data || [];
@@ -60,7 +60,7 @@ export default function TrainerCustomerDashboard() {
         allUserIds.map(async (id) => {
           try {
             const res = await axios.get(
-              `http://localhost:4000/api/users/getuser/${id}`
+              `https://fitnesssystem.onrender.com/api/users/getuser/${id}`
             );
             map[id] = res.data;
           } catch {
@@ -82,7 +82,7 @@ export default function TrainerCustomerDashboard() {
 
   const handlePaySalary = async (trainerId) => {
     try {
-      const res = await axios.post("http://localhost:4000/api/admin/pay", {
+      const res = await axios.post("https://fitnesssystem.onrender.com/api/admin/pay", {
         trainerId,
         month: currentMonth,
         year: currentYear,

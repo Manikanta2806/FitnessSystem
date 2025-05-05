@@ -12,7 +12,7 @@ export default function TrainerProfile() {
   useEffect(() => {
     const fetchTrainerDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/api/trainers/${trainerId}`);
+        const response = await fetch(`https://fitnesssystem.onrender.com/api/trainers/${trainerId}`);
         const data = await response.json();
 
         if (data && data._id) {

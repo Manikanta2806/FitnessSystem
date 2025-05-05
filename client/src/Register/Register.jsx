@@ -90,7 +90,7 @@ const Register = () => {
         formPayload.append("body_type", body_type);
       }
 
-      await axios.post("http://localhost:4000/api/users/register", formPayload, {
+      await axios.post("https://fitnesssystem.onrender.com/api/users/register", formPayload, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 

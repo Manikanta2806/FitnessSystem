@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
   }, [user, token]);
 
   const login = async (credentials) => {
-    const response = await axios.post("http://localhost:4000/api/users/login", credentials);
+    const response = await axios.post("https://fitnesssystem.onrender.com/api/users/login", credentials);
     const { token, role, userId } = response.data;
 
     if (!userId) throw new Error("Invalid login response: missing userId");

@@ -15,7 +15,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchTrainers = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/trainers/all");
+        const res = await fetch("https://fitnesssystem.onrender.com/api/trainers/all");
         const data = await res.json();
         if (Array.isArray(data)) setTrainers(data);
         else throw new Error("Invalid trainer data format");
@@ -28,7 +28,7 @@ export default function Dashboard() {
 
     const fetchCustomers = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/customers/allc");
+        const res = await fetch("https://fitnesssystem.onrender.com/api/customers/allc");
         const data = await res.json();
         if (Array.isArray(data)) setCustomers(data);
         else throw new Error("Invalid customer data format");

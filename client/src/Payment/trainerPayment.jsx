@@ -20,7 +20,7 @@ const TrainerHistory = () => {
       }
 
       try {
-        const res = await axios.get(`http://localhost:4000/api/payment/trainer/history/${trainerId}`, {
+        const res = await axios.get(`https://fitnesssystem.onrender.com/api/payment/trainer/history/${trainerId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

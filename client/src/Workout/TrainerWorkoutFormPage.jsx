@@ -28,7 +28,7 @@ const TrainerWorkoutFormPage = () => {
       if (!trainerUserId) return;
       try {
         const { data: customerList } = await axios.get(
-          `http://localhost:4000/api/workouts/trainer-with-customers/${trainerUserId}`
+          `https://fitnesssystem.onrender.com/api/workouts/trainer-with-customers/${trainerUserId}`
         );
         setCustomers(customerList || []);
 
@@ -39,7 +39,7 @@ const TrainerWorkoutFormPage = () => {
             const custUserId = typeof c._id === "object" ? c._id._id : c._id;
             try {
               const { data: user } = await axios.get(
-                `http://localhost:4000/api/users/getuser/${custUserId}`
+                `https://fitnesssystem.onrender.com/api/users/getuser/${custUserId}`
               );
               userMapTemp[custUserId] = user;
             } catch {
@@ -63,7 +63,7 @@ const TrainerWorkoutFormPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/api/workouts/add", formData);
+      await axios.post("https://fitnesssystem.onrender.com/api/workouts/add", formData);
       alert("Workout Plan Added!");
       setFormData({
         customer_id: "",

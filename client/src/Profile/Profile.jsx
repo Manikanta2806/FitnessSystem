@@ -30,7 +30,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/api/users/${userId}/full-profile`, {
+        const res = await axios.get(`https://fitnesssystem.onrender.com/api/users/${userId}/full-profile`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -84,7 +84,7 @@ const Profile = () => {
       };
 
       await axios.put(
-        `http://localhost:4000/api/users/${userId}/full-profile/update`,
+        `https://fitnesssystem.onrender.com/api/users/${userId}/full-profile/update`,
         { userData, profileData },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -102,7 +102,7 @@ const Profile = () => {
     if (!confirmDelete) return;
 
     try {
-      const res = await axios.delete(`http://localhost:4000/api/users/${userId}`, {
+      const res = await axios.delete(`https://fitnesssystem.onrender.com/api/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

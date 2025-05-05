@@ -27,7 +27,7 @@ const BMICalculator = () => {
         try {
             setLoading(true);
             setError('');
-            const response = await axios.post('http://localhost:4000/api/bmi/calculate', { userId });
+            const response = await axios.post('https://fitnesssystem.onrender.com/api/bmi/calculate', { userId });
             setBmi(response.data);
             fetchBMIHistory();
         } catch (err) {
@@ -40,7 +40,7 @@ const BMICalculator = () => {
 
     const fetchBMIHistory = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/bmi/${userId}/history`);
+            const response = await axios.get(`https://fitnesssystem.onrender.com/api/bmi/${userId}/history`);
             setHistory(response.data);
         } catch (err) {
             console.error(err);

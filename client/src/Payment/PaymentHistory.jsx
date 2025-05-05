@@ -21,7 +21,7 @@ export default function PaymentHistory() {
             }
 
             try {
-                const response = await axios.get(`http://localhost:4000/api/payment/history/${user._id}`, {
+                const response = await axios.get(`https://fitnesssystem.onrender.com/api/payment/history/${user._id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

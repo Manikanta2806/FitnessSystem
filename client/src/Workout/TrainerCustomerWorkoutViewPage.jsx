@@ -19,7 +19,7 @@ const TrainerCustomerWorkoutViewPage = () => {
       if (!userId) return;
 
       try {
-        const res = await axios.get(`http://localhost:4000/api/workouts/trainer-with-customers/${userId}`);
+        const res = await axios.get(`https://fitnesssystem.onrender.com/api/workouts/trainer-with-customers/${userId}`);
         const customerList = res.data || [];
         setCustomers(customerList);
 
@@ -28,7 +28,7 @@ const TrainerCustomerWorkoutViewPage = () => {
           customerList.map(async (customer) => {
             const custUserId = typeof customer._id === "object" ? customer._id._id : customer._id;
             try {
-              const userRes = await axios.get(`http://localhost:4000/api/users/getuser/${custUserId}`);
+              const userRes = await axios.get(`https://fitnesssystem.onrender.com/api/users/getuser/${custUserId}`);
               tempMap[custUserId] = userRes.data;
             } catch {
               tempMap[custUserId] = { username: "Unknown", email: "Unknown" };
@@ -54,7 +54,7 @@ const TrainerCustomerWorkoutViewPage = () => {
     setLoading(true);
     setError("");
     try {
-      const { data } = await axios.get(`http://localhost:4000/api/workouts/${customerUserId}`);
+      const { data } = await axios.get(`https://fitnesssystem.onrender.com/api/workouts/${customerUserId}`);
       setPlans(data);
 
       const initialEdited = {};
@@ -81,7 +81,7 @@ const TrainerCustomerWorkoutViewPage = () => {
   const handleUpdate = async (planId) => {
     try {
       const updatedPlan = editedPlans[planId];
-      await axios.put(`http://localhost:4000/api/workouts/update/${planId}`, {
+      await axios.put(`https://fitnesssystem.onrender.com/api/workouts/update/${planId}`, {
         plan: updatedPlan,
       });
       alert("Workout plan updated!");

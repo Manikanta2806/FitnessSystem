@@ -30,7 +30,7 @@ const PaymentForm = () => {
   useEffect(() => {
     const fetchTrainers = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/trainers/all", {
+        const res = await axios.get("https://fitnesssystem.onrender.com/api/trainers/all", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTrainers(Array.isArray(res.data) ? res.data : []);
@@ -85,7 +85,7 @@ const PaymentForm = () => {
         }),
       };
 
-      await axios.post("http://localhost:4000/api/payment/pay", paymentPayload, {
+      await axios.post("https://fitnesssystem.onrender.com/api/payment/pay", paymentPayload, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -96,7 +96,7 @@ const PaymentForm = () => {
           membershipPlan: planName,
         };
 
-        await axios.post("http://localhost:4000/api/trainers/custassign", assignPayload, {
+        await axios.post("https://fitnesssystem.onrender.com/api/trainers/custassign", assignPayload, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }

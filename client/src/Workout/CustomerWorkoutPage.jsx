@@ -16,7 +16,7 @@ const CustomerWorkoutPage = () => {
       navigate("/login");
     } else {
       axios
-        .get(`http://localhost:4000/api/workouts/${user._id}`)
+        .get(`https://fitnesssystem.onrender.com/api/workouts/${user._id}`)
         .then((res) => setPlans(res.data))
         .catch((err) => {
           console.error("Error fetching plans:", err);
